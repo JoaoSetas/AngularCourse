@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AngularCourse</title>
+  <title>Angular Course</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <!--To connect to github: copy and paste the sectoin (…or create a new repository on the command line) after creating a repository in github
       To install this: npm install --save [name](like - tether, jquery, bootstrap)
-      To create component: ng g c [componentName]
-      To create Model: ng g cl shared/ingredient.model
+      To create component: ng g c [componentName] --spec=false
+      To create Model or normal class(remove .model): ng g cl shared/[model or class name].model
+      To create Service: ng g s shared/[serviceName] --spec=false -m=app.module
       To start server: ng serve
-      To deploy: ng build --prod --base-href https://renatissima.github.io/[repository]
-      To publish github: ngh-->
+      To deploy: ng build --prod --base-href https://renatissima.github.io/[repository]/
+      To publish github: ngh
+    -->
 </head>
 <body>
   <app-root></app-root>
