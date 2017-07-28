@@ -12,7 +12,7 @@ export class RecipesItemComponent implements OnInit {
 
 
   onRepipeSelected(){
-    this.recipeService.select(this.recipe);
+    this.recipeService.selected.emit(this.recipe);
   }
 
   constructor(private recipeService: RecipeService) { }
