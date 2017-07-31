@@ -3,16 +3,27 @@ import { Ingredient } from "./ingredient.model";
 
 @Injectable()
 export class ShoppingListService {
-  private ingredients: Ingredient[] = [
-    new Ingredient("Maça", 10),
-    new Ingredient("Castanha", 5)
-  ];
+  private ingredients: Ingredient[] = [];
   onSubmit = new EventEmitter<Ingredient>();
 
   constructor() { }
 
   addIngredient(ingredient: Ingredient){
-    this.ingredients.push(ingredient);
+    let exists = false;
+    for(let oldIngredient of this.ingredients)
+        if(ingredient.name === oldIngredient.name){
+          oldIngredient.amount = +ingredient.amount + +oldIngredient.amount;
+          exists = true;
+          break;
+        }
+    if(!exists)
+      this.ingredients.push(Object.assign({}, ingredient));
+  }
+
+  addIngredients(ingredients: Ingredient[]){
+    for(let newIngredient of ingredients){
+      this.addIngredient(newIngredient);
+    }
   }
 
   getIngredients(){

@@ -11,6 +11,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeService } from './shared/recipe.service';
 import { ShoppingListService } from './shared/shopping-list.service';
+import { ShoppingItemComponent } from './shopping-list/shopping-item/shopping-item.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ShoppingListService } from './shared/shopping-list.service';
     RecipesDetailComponent,
     RecipesItemComponent,
     ShoppingListComponent,
-    ShoppingEditComponent
+    ShoppingEditComponent,
+    ShoppingItemComponent
   ],
   imports: [
     BrowserModule
