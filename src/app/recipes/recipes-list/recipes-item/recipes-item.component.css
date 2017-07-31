@@ -1,3 +1,7 @@
 a:focus{
     color: #464a4c !important;
 }
+
+p{
+    font-size: 0.89rem;
+}

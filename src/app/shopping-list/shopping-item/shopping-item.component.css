@@ -1,0 +1,20 @@
+.list-group-item{
+    border-radius: 0;
+}
+
+.custom-list-group-item {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-flow: row wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    border: 1px solid rgba(0,0,0,.125);
+}

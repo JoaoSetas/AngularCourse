@@ -1,7 +1,7 @@
-<a (click)="onRepipeSelected()" href="#{{recipe.name}}" class="list-group-item btn-outline-success media">
+<a (click)="recipeService.onSelected(recipe)" href="#{{recipe.name}}" class="custom-list-group-item list-group-item btn-outline-success media mb-2">
   <div class="media-body text-left">
     <h5 class="mt-0 mb-1">{{recipe.name}}</h5>
-    <p [innerHTML]="recipe.description" class="text-muted mr-2 mt-2"></p>
+    <p [innerHTML]="recipe.description" class="text-muted"></p>
   </div>
     <img [src]="recipe.imagePath" class="d-flex ml-3 rounded" style="max-height: 100px" alt="{{recipe.name}}">
 </a>

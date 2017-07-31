@@ -1,3 +1,9 @@
-app-shopping-item{
-    max-width: 20rem;
+app-shopping-item:last-child a.custom-list-group-item {
+    margin-bottom: 0;
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+app-shopping-item:first-child a.custom-list-group-item {
+    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;
 }

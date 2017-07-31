@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from "../recipes/recipe.model";
 import { Ingredient } from "./ingredient.model";
 
@@ -42,9 +42,15 @@ export class RecipeService {
                  new Ingredient("cup jarred marinara sauce", 3/4),
                ]),
   ]
-  selected = new EventEmitter<Recipe>();
+  private selected: Recipe;
 
-  constructor() { }
+  constructor() {
+      this.selected = null;
+   }
+
+  addRecipe(recipe: Recipe){
+    this.recipes.push(recipe);
+  }
 
   getRecipes(){
     return this.recipes.slice();
@@ -52,6 +58,10 @@ export class RecipeService {
 
   getSelected(){
     return this.selected;
+  }
+
+  onSelected(recipe: Recipe){
+    this.selected = recipe;
   }
 
 }
