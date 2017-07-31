@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Ingredient } from "../../shared/ingredient.model";
+import { FormSelectedService } from "../../shared/form-selected.service";
 
 @Component({
   selector: 'app-shopping-item',
@@ -9,7 +10,11 @@ import { Ingredient } from "../../shared/ingredient.model";
 export class ShoppingItemComponent implements OnInit {
   @Input() ingredient: Ingredient;
 
-  constructor() { }
+  onSelected(){
+    this.formSelected.onSubmit.emit(this.ingredient.name);
+  }
+
+  constructor(private formSelected: FormSelectedService) { }
 
   ngOnInit() {
   }

@@ -12,7 +12,9 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { RecipeService } from './shared/recipe.service';
 import { ShoppingListService } from './shared/shopping-list.service';
 import { ShoppingItemComponent } from './shopping-list/shopping-item/shopping-item.component';
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from '@angular/router';
+import { FormSelectedService } from './shared/form-selected.service';
+import { AngularCourseService } from './shared/angular-course.service'
 
 const appRoutes: Routes = [
   { path: '', component: RecipesComponent},
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [RecipeService, ShoppingListService, FormSelectedService, AngularCourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

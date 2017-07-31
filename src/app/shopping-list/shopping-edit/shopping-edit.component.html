@@ -1,4 +1,4 @@
-<div class="form-inline">
+<form (keypress)="$event.key == 'Enter' ? onSubmit() : null" class="form-inline">
   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
     <div class="input-group-addon">Name</div>
     <input #nameInput type="text" class="form-control" id="inlineFormInputGroup" placeholder="Ingredient">
@@ -8,5 +8,6 @@
     <div class="input-group-addon">#</div>
     <input #numberInput type="number" class="form-control" id="numberInput" placeholder="Number">
   </div>
-  <button (click)="onSubmit()"  class="btn btn-success">Add</button>
-</div>
+  <button type="button" (click)="onSubmit()"  class="btn btn-success">Add</button>
+  <button type="button" (click)="onRemove()"  class="btn btn-danger ml-2">Remove</button>
+</form>

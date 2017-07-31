@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Ingredient } from "../../shared/ingredient.model";
 import { ShoppingListService } from "../../shared/shopping-list.service";
+import { FormSelectedService } from "../../shared/form-selected.service";
 
 @Component({
   selector: 'app-shopping-edit',
@@ -16,7 +17,18 @@ export class ShoppingEditComponent implements OnInit {
     this.shoppingService.addIngredient(ingredient);
   }
 
-  constructor(private shoppingService: ShoppingListService) { }
+  onRemove()
+  {
+    const ingredient = new Ingredient(this.nameInput.nativeElement.value, Number.NEGATIVE_INFINITY );
+    this.shoppingService.addIngredient(ingredient);
+  }
+
+  constructor(private shoppingService: ShoppingListService, public formSelected: FormSelectedService) {
+    formSelected.onSubmit.subscribe((name: string) => {
+      this.nameInput.nativeElement.value = name;
+      this.numberInput.nativeElement.value = null;
+    });
+  }
 
   ngOnInit() {
   }

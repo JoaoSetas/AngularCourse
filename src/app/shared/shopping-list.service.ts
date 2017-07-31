@@ -4,20 +4,24 @@ import { Ingredient } from "./ingredient.model";
 @Injectable()
 export class ShoppingListService {
   private ingredients: Ingredient[] = [];
-  onSubmit = new EventEmitter<Ingredient>();
 
   constructor() { }
 
   addIngredient(ingredient: Ingredient){
-    let exists = false;
+
     for(let oldIngredient of this.ingredients)
         if(ingredient.name === oldIngredient.name){
           oldIngredient.amount = +ingredient.amount + +oldIngredient.amount;
-          exists = true;
-          break;
+          if(oldIngredient.amount <= 0)
+            this.ingredients.splice(this.ingredients.indexOf(oldIngredient), 1);
+          return;
         }
-    if(!exists)
-      this.ingredients.push(Object.assign({}, ingredient));
+
+    this.ingredients.push(Object.assign({}, ingredient));
+
+    this.ingredients.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
   }
 
   addIngredients(ingredients: Ingredient[]){
