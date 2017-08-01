@@ -13,20 +13,30 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('numberInput') numberInput: ElementRef;
 
   onSubmit(){
-    const ingredient = new Ingredient(this.nameInput.nativeElement.value, this.numberInput.nativeElement.value);
-    this.shoppingService.addIngredient(ingredient);
+    this.shoppingService.addNewIngredient(this.nameInput.nativeElement.value, this.numberInput.nativeElement.value);
+  }
+
+  onEdit(){
+    if(this.shoppingService.getSelected()){
+      this.shoppingService.getSelected().amount = this.numberInput.nativeElement.value;
+      this.shoppingService.getSelected().name = this.nameInput.nativeElement.value;
+      this.shoppingService.addIngredient(this.shoppingService.getSelected());
+    }
   }
 
   onRemove()
   {
-    const ingredient = new Ingredient(this.nameInput.nativeElement.value, Number.NEGATIVE_INFINITY );
-    this.shoppingService.addIngredient(ingredient);
+    if(this.shoppingService.getSelected()){
+      this.shoppingService.removeIngredient(this.shoppingService.getSelected().id);
+      this.shoppingService.onSelected(null);
+    }
   }
 
-  constructor(private shoppingService: ShoppingListService, public formSelected: FormSelectedService) {
-    formSelected.onSubmit.subscribe((name: string) => {
-      this.nameInput.nativeElement.value = name;
-      this.numberInput.nativeElement.value = null;
+  constructor(public shoppingService: ShoppingListService, public formSelected: FormSelectedService) {
+    formSelected.onSubmit.subscribe((ingredient: Ingredient) => {
+      this.shoppingService.onSelected(ingredient);
+      this.nameInput.nativeElement.value = ingredient.name;
+      this.numberInput.nativeElement.value = ingredient.amount;
     });
   }
 

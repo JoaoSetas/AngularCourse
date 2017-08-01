@@ -10,7 +10,7 @@
         Options
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <a (click)="addAllIngredients()"class="dropdown-item" href="#">Add all ingredients</a>
+        <a (click)="addAllIngredients()"class="dropdown-item" [routerLink]="['/shoppingList']">Add all ingredients</a>
         <a class="dropdown-item" href="#">Edit Recipe</a>
         <a class="dropdown-item" href="#">Delete Recipe</a>
       </div>

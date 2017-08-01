@@ -16,8 +16,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormSelectedService } from './shared/form-selected.service';
 
 const appRoutes: Routes = [
-  { path: '', component: RecipesComponent},
+  { path: '', component: RecipesComponent, pathMatch: 'full' },
   { path: 'shoppingList', component: ShoppingListComponent},
+  { path: '**', redirectTo: ''},
 ]
 
 @NgModule({

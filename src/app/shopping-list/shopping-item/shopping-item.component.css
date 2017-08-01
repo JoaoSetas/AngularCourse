@@ -2,6 +2,13 @@
     border-radius: 0;
 }
 
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
+
 .custom-list-group-item {
     position: relative;
     display: -webkit-box;

@@ -3,7 +3,7 @@ import { Ingredient } from "./ingredient.model";
 
 @Injectable()
 export class FormSelectedService {
-  onSubmit = new EventEmitter<string>();
+  onSubmit = new EventEmitter<Ingredient>();
 
   constructor() { }
 

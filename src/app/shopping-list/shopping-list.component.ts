@@ -20,7 +20,9 @@ export class ShoppingListComponent implements OnInit {
     this.shoppingService.addIngredient(ingredient);
   }
 
-  constructor(public shoppingService: ShoppingListService) { }
+  constructor(public shoppingService: ShoppingListService) {
+
+   }
 
   ngOnInit() {
   }
