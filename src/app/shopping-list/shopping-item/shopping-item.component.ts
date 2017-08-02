@@ -12,7 +12,7 @@ export class ShoppingItemComponent implements OnInit {
   @Input() ingredient: Ingredient;
 
   onSelected(){
-    this.formSelected.onSubmit.emit(this.ingredient);
+    this.formSelected.onSubmit.next(this.ingredient);
 
   }
 

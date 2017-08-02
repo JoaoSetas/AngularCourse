@@ -1,0 +1,20 @@
+<h1>
+  <input [value]="" class="form-control form-control-lg mt-2" type="text" placeholder="Name">
+</h1>
+
+<p class="pl-3 pt-2">
+    <textarea [innerHTML]="" class="form-control form-control-lg" type="text" rows="3" placeholder="Description"></textarea>
+</p>
+
+<div class="row">
+  <div class="col-8">
+    <h3 class="mb-3 d-inline">Instructions:</h3>
+    <button type="button" (click)="addInstruction()" class="btn btn-outline-success d-inline ml-3">Add</button>
+    <app-recipe-edit-instruction *ngFor="let instruction of recipe.instructions" [instruction]="instruction"></app-recipe-edit-instruction>
+  </div>
+  <div class="col-4 pl-3">
+    <h5 class="mb-3 d-inline">Ingredients:</h5>
+    <button type="button" (click)="addIngredient()" class="btn btn-sm btn-outline-success d-inline ml-3">Add</button>
+    <app-recipes-edit-ingredient *ngFor="let ingredient of recipe.ingredients" [ingredient]="ingredient" ></app-recipes-edit-ingredient>
+  </div>
+</div>

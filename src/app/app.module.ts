@@ -14,10 +14,19 @@ import { ShoppingListService } from './shared/shopping-list.service';
 import { ShoppingItemComponent } from './shopping-list/shopping-item/shopping-item.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormSelectedService } from './shared/form-selected.service';
+import { GuardGuard } from './guard.guard';
+import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
+import { RecipeEditInstructionComponent } from './recipes/recipes-edit/recipe-edit-instruction/recipe-edit-instruction.component';
+import { RecipesEditIngredientComponent } from './recipes/recipes-edit/recipes-edit-ingredient/recipes-edit-ingredient.component';
 
 const appRoutes: Routes = [
-  { path: '', component: RecipesComponent, pathMatch: 'full' },
-  { path: 'shoppingList', component: ShoppingListComponent},
+  { path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  { path: 'recipes', component: RecipesComponent, children:[
+    { path: 'new', component: RecipesEditComponent},
+    { path: ':id', component: RecipesDetailComponent, },
+    { path: ':id/edit', component: RecipesEditComponent, }
+  ]},
+  { path: 'shoppingList', component: ShoppingListComponent, canActivate: [GuardGuard]},
   { path: '**', redirectTo: ''},
 ]
 
@@ -31,13 +40,16 @@ const appRoutes: Routes = [
     RecipesItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    ShoppingItemComponent
+    ShoppingItemComponent,
+    RecipesEditComponent,
+    RecipeEditInstructionComponent,
+    RecipesEditIngredientComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [RecipeService, ShoppingListService, FormSelectedService],
+  providers: [RecipeService, ShoppingListService, FormSelectedService, GuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

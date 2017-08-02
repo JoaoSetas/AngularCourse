@@ -4,9 +4,9 @@
 
 .list-group-item.active {
     z-index: 2;
-    color: #fff;
+    color: slategrey;
     background-color: #5cb85c;
-    border-color: #5cb85c;
+    border-color: slategrey;
 }
 
 .custom-list-group-item {

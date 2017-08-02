@@ -3,6 +3,6 @@
     <app-recipes-list></app-recipes-list>
   </div>
   <div class="col-lg-7">
-    <app-recipes-detail *ngIf="recipeService.getSelected() != null" [recipe]="recipeService.getSelected()"></app-recipes-detail>
+    <router-outlet></router-outlet>
   </div>
 </div>

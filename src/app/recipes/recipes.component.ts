@@ -13,23 +13,17 @@ export class RecipesComponent implements OnInit {
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.route.fragment.subscribe((params: string) => {
-        this.recipeService.onSelected(this.recipeService.findRecipe(params));            
-    });      
+  ngOnInit() {    
   }
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(event.key);
     event.key === 'm' ? this.recipeService.addRecipe(
-      new Recipe(3,
         "Marta",
         "Amo-te Muito fofinha",
         ["Ir para a cama", "Baixar as luzes", "Acender as velas", "ect..."],
         "http://www.publicdomainpictures.net/pictures/90000/velka/red-scribble-heart.jpg",
-        [new Ingredient(26, "Vela", 69), new Ingredient(27, "Cama Grade", 1), new Ingredient(28, "Lubrificante", 1)]
-      )) : null;
+        [new Ingredient(26, "Vela", 69), new Ingredient(27, "Cama Grade", 1), new Ingredient(28, "Lubrificante", 1)]) : null;
   }
 
 }

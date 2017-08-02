@@ -45,16 +45,16 @@ export class RecipeService {
                ]),
   ]
   private selected: Recipe;
+  private incrementId = 3;
 
   constructor() {
       this.selected = null;
    }
 
-  addRecipe(recipe: Recipe){
-    if(this.findRecipe(recipe.id.toString()) == null)
-      this.recipes.push(recipe);
-    else
-      console.log("Recipe with index " + recipe.id + " already exists");
+  addRecipe(name: string, descripton: string, instructions: string[], imageLink: string, ingredients: Ingredient[]){
+    let newRecipe = new Recipe(this.incrementId++, name, descripton, instructions, imageLink, ingredients);
+    this.recipes.push(newRecipe);
+    return newRecipe;
   }
 
   getRecipes(){

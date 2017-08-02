@@ -1,31 +1,13 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Ingredient } from "./ingredient.model";
 
 @Injectable()
 export class ShoppingListService {
   private ingredients: Ingredient[] = [];
   private incrementId: number = 29; 
-  private selected: Ingredient;
+  private selected: Ingredient[] = [];
 
   constructor() { }
-
-  addIngredient(ingredient: Ingredient){
-
-    let foundIngredient = this.ingredients.find((value) => {
-      return value.id === ingredient.id;
-    })
-
-    if(foundIngredient){
-      foundIngredient.amount = ingredient.amount;
-      if(foundIngredient.amount <= 0)
-        foundIngredient.amount = 1;
-      return;
-    }
-
-    this.ingredients.push(Object.assign({}, ingredient));
-
-    this.sort();
-  }
 
   addNewIngredient(name: string, number: number){
     if(number <= 0)
@@ -36,14 +18,47 @@ export class ShoppingListService {
 
   addIngredients(ingredients: Ingredient[]){
     for(let newIngredient of ingredients){
-      this.addIngredient(newIngredient);
+      if(this.findIngredient(newIngredient.id)){
+        console.log("Ingredient " + newIngredient.name + " exists");
+        continue;
+      }
+      this.ingredients.push(newIngredient);
+    }
+  }
+
+  editIngredient(id: number, name: string, amount: number){
+    let foundIngredient = this.findIngredient(id);
+    if(foundIngredient){
+      foundIngredient.amount = amount;
+      foundIngredient.name = name;
+      if(foundIngredient.amount <= 0)
+        foundIngredient.amount = 1;
+      return;
     }
   }
 
   removeIngredient(id: number){
-    this.ingredients.splice(this.ingredients.indexOf(this.ingredients.find((value) => {
+    this.ingredients.splice(this.ingredients.indexOf(this.findIngredient(id)), 1);
+  }
+
+  removeSelectedIngredient(id: number){
+    this.selected.splice(this.selected.indexOf(this.findSelectedIngredient(id)), 1);
+  }
+
+  removeAllSelectedIngredients(){
+    this.selected = [];
+  }
+
+  findIngredient(id: number){
+    return this.ingredients.find((value) => {
       return value.id === id;
-    })), 1);
+    })
+  }
+
+  findSelectedIngredient(id: number){
+    return this.selected.find((value) => {
+      return value.id === id;
+    })
   }
 
   sort(){
@@ -61,7 +76,13 @@ export class ShoppingListService {
   }
 
   onSelected(ingredient: Ingredient){
-    this.selected = ingredient;
+    let selectedIngredient = this.findSelectedIngredient(ingredient.id);
+
+    if(selectedIngredient){
+      this.removeSelectedIngredient(selectedIngredient.id);
+      return;
+    }
+    this.selected.push(ingredient);
   }
 
 }

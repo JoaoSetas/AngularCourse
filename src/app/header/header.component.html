@@ -3,14 +3,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" [routerLink]="['']">Navbar</a>
-
+  <!--[routerLinkActiveOptions]="{exact: true}" para procurar o link exacto sem /.. -->
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-        <a class="nav-link" [routerLink]="['']" (click)="onNavButton('Recipes')">Recipes<span class="sr-only">(current)</span></a>
+      <li [routerLinkActive]="['active']"  class="nav-item">
+        <a class="nav-link" [routerLink]="['/recipes']">Recipes<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a [routerLinkActive]="['active']" class="nav-link" [routerLink]="['/shoppingList']" (click)="onNavButton('Shopping')">Shopping List</a>
+      <li [routerLinkActive]="['active']" class="nav-item">
+        <a class="nav-link" [routerLink]="['/shoppingList']">Shopping List</a>
       </li>
     </ul>
   </div>

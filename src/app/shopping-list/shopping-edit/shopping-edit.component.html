@@ -1,4 +1,4 @@
-<form (keypress)="$event.key == 'Enter' ? onSubmit() : null" class="form-inline">
+<form (keypress)="$event.key == 'Enter' ? onEnter() : null" class="form-inline">
   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
     <div class="input-group-addon">Name</div>
     <input #nameInput [size]="nameInput.value.length ? nameInput.value.length : 20" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Ingredient">
@@ -6,10 +6,13 @@
 
   <div class="input-group mb-2 mr-sm-2 mb-sm-0 col-2">
     <div class="input-group-addon">#</div>
-    <input #numberInput type="number" class="form-control" id="numberInput" placeholder="Number">
+    <input #numberInput type="number" class="form-control" id="numberInput" placeholder="Amount">
   </div>
   <button type="button" (click)="onSubmit()"  class="btn btn-success">Add</button>
   <button type="button" (click)="onEdit()"  class="btn btn-warning ml-2">Edit</button>
   <button type="button" (click)="onRemove()"  class="btn btn-danger ml-2">Remove</button>
-  
 </form>
+
+<div *ngIf="warning" class="alert alert-warning mt-2" role="alert">
+  <strong>Warning!</strong> {{warning}}
+</div>

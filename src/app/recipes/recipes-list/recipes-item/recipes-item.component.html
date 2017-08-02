@@ -1,4 +1,4 @@
-<a [routerLink]="['']" [fragment]="recipe.id.toString()" [id]="recipe.id.toString()" class="custom-list-group-item list-group-item btn-outline-success media mb-2">
+<a [routerLink]="[recipe.id.toString()]" [id]="recipe.id.toString()" class="custom-list-group-item list-group-item btn-outline-success media mb-2">
   <div class="media-body text-left">
     <h5 class="mt-0 mb-1">{{recipe.name}}</h5>
     <p [innerHTML]="recipe.description" class="text-muted"></p>

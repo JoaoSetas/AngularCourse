@@ -16,10 +16,6 @@ export class ShoppingListComponent implements OnInit {
     this.size = event.key === '+' ? (this.size+1) % 13 : this.size;
   }
 
-  onSubmit(ingredient: Ingredient){
-    this.shoppingService.addIngredient(ingredient);
-  }
-
   constructor(public shoppingService: ShoppingListService) {
 
    }
