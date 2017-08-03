@@ -44,6 +44,8 @@ export class IngredientService {
       foundIngredient.name = name;
       if(foundIngredient.amount <= 0)
         foundIngredient.amount = 1;
+      else if(foundIngredient.amount >= 99999)
+        foundIngredient.amount = 99999;
       return;
     }
   }

@@ -2,6 +2,20 @@ a:focus{
     color: #464a4c !important;
 }
 
+.list-group-item.active {
+    z-index: 2;
+    color: slategrey;
+    background-color: #97e297;
+    border-color: slategrey;
+}
+
 p{
     font-size: 0.89rem;
+    white-space: pre-line;
+    max-width: 20rem;
+}
+
+img{
+    max-height: 6.5rem;
+    max-width: 7rem;
 }

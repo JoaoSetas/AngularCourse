@@ -22,7 +22,7 @@ export class RecipeEditInstructionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.recipe.instructions[this.index] = this.instruction.replace(/(?:\r\n|\r|\n)/g, '<br />');
+    this.recipe.instructions[this.index] = this.instruction;
   }
 
 }

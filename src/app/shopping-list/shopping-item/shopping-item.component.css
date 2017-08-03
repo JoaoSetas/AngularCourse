@@ -5,7 +5,7 @@
 .list-group-item.active {
     z-index: 2;
     color: slategrey;
-    background-color: #5cb85c;
+    background-color: #97e297;
     border-color: slategrey;
 }
 

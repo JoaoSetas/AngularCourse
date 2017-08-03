@@ -1,7 +1,7 @@
-<a [routerLink]="[recipe.id.toString()]" [id]="recipe.id.toString()" class="custom-list-group-item list-group-item btn-outline-success media mb-2">
+<a [routerLinkActive]="['active']" [routerLink]="[recipe.id.toString()]" [id]="recipe.id.toString()" class="custom-list-group-item list-group-item btn-outline-success media mb-2">
   <div class="media-body text-left">
     <h5 class="mt-0 mb-1">{{recipe.name}}</h5>
     <p [innerHTML]="recipe.description" class="text-muted"></p>
   </div>
-    <img [src]="recipe.imagePath" class="d-flex ml-3 rounded" style="max-height: 100px" alt="{{recipe.name}} image">
+    <img [src]="recipe.imagePath" class="d-flex ml-3 rounded">
 </a>

@@ -1,5 +1,5 @@
 
-<img [src]="recipe.imagePath" class="mx-auto d-block rounded my-2" alt="{{recipe.name}} image">
+<img [src]="recipe.imagePath" class="mx-auto d-block rounded my-2">
 
 <h1 class="d-inline">{{recipe.name}}</h1>
 <div class="dropdown d-inline pl-5">
@@ -9,17 +9,17 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <a (click)="addAllIngredients()"class="dropdown-item" [routerLink]="['/shoppingList']">Add all ingredients</a>
     <a class="dropdown-item" [routerLink]="['edit']">Edit Recipe</a>
-    <a class="dropdown-item" href="#">Delete Recipe</a>
+    <a class="dropdown-item" (click)="onDelete()" [routerLink]="['/recipes']">Delete Recipe</a>
   </div>
 </div>
 
-<p [innerHTML]="recipe.description" class="pl-3 pt-2"></p>
+<p style="white-space: pre-line" [innerHTML]="recipe.description" class="pl-3 pt-2"></p>
 
 <div class="row">
   <div class="col-8">
     <h3 class="mb-3">Instructions:</h3>
     <blockquote *ngFor="let instruction of recipe.instructions" class="blockquote">
-      <p [innerHTML]="instruction"></p>
+      <p style="white-space: pre-line" [innerHTML]="instruction"></p>
     </blockquote>
   </div>
   <div class="col-4 pl-3">

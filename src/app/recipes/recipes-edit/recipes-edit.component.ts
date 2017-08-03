@@ -30,6 +30,11 @@ export class RecipesEditComponent implements OnInit, OnDestroy {
     this.recipe.ingredients.push(this.ingredientService.addIngredient("", null));
   }
 
+  addImage(target){
+    this.recipe.imagePath = target.value;
+    target.value = "";
+  }
+
   onSave(){
     this.saved = true;
     this.router.navigate(['/recipes', this.recipe.id]);
@@ -48,9 +53,8 @@ export class RecipesEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.recipe.description = this.recipe.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
-    if(!this.saved)
-      this.recipeService.removeRecipe(this.recipe.id);
+    /*if(!this.saved)
+      this.recipeService.removeRecipe(this.recipe.id);*/
   }
 
 }

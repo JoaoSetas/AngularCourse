@@ -17,6 +17,10 @@ export class RecipesDetailComponent implements OnInit {
     this.shoppingService.addIngredients(this.recipe.ingredients);
   }
 
+  onDelete(){
+    this.recipeService.removeRecipe(this.recipe.id);
+  }
+
   constructor(private shoppingService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {

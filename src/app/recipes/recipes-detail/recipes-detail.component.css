@@ -12,5 +12,6 @@ ul h6{
 }
 
 img{
-    max-width: 25rem;
+    max-height: 25rem;
+    max-width: 45rem;
 }

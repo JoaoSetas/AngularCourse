@@ -1,0 +1,8 @@
+.dragDrop{
+    border: 1px dashed;
+}
+
+img{
+    max-height: 25rem;
+    max-width: 45rem;
+}
