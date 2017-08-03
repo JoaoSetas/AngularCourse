@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Recipe } from "../recipe.model";
 import { RecipeService } from "../../shared/recipe.service";
 import { Ingredient } from "../../shared/ingredient.model";
+import { IngredientService } from "../../shared/ingredient.service";
 
 @Component({
   selector: 'app-recipes-edit',
@@ -13,15 +14,28 @@ export class RecipesEditComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   saved: boolean = false;
 
+  addName(value: string){
+    this.recipe.name = value;
+  }
+
+  addDescription(value: string){
+    this.recipe.description = value;
+  }
+
   addInstruction(){
     this.recipe.instructions.push("");
   }
 
   addIngredient(){
-    //TODO servico insgredients this.recipe.ingredients.push();
+    this.recipe.ingredients.push(this.ingredientService.addIngredient("", null));
   }
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  onSave(){
+    this.saved = true;
+    this.router.navigate(['/recipes', this.recipe.id]);
+  }
+
+  constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private ingredientService: IngredientService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -34,7 +48,9 @@ export class RecipesEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    //TODO apagar recipe do service se não for submetido
+    this.recipe.description = this.recipe.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
+    if(!this.saved)
+      this.recipeService.removeRecipe(this.recipe.id);
   }
 
 }

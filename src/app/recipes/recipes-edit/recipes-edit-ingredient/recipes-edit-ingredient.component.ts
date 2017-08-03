@@ -9,6 +9,14 @@ import { Ingredient } from "../../../shared/ingredient.model";
 export class RecipesEditIngredientComponent implements OnInit {
   @Input() ingredient: Ingredient;
 
+  onName(value: string){
+    this.ingredient.name = value;
+  }
+
+  onAmount(value: number){
+    this.ingredient.amount = value;
+  }
+
   constructor() { }
 
   ngOnInit() {

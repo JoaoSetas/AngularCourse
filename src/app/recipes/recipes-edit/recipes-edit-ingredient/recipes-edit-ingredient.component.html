@@ -1,8 +1,8 @@
 <div class="row mt-2">
   <div class="col-8">
-    <input #nameInput [value]="ingredient.name" type="text" class="d-inline form-control form-control-sm" id="inlineFormInputGroup" placeholder="Ingredient Name">
+    <input (input)="onName($event.target.value)" [value]="ingredient.name" type="text" class="d-inline form-control form-control-sm" id="inlineFormInputGroup" placeholder="Ingredient Name">
   </div>
   <div class="col-4">
-    <input #numberInput [value]="ingredient.amount"  type="number" class="form-control form-control-sm d-inline" id="numberInput" placeholder="#">
+    <input (input)="onAmount($event.target.value)" [value]="ingredient.amount"  type="number" class="form-control form-control-sm d-inline" id="numberInput" placeholder="#">
   </div>
 </div>

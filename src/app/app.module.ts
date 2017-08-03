@@ -18,6 +18,7 @@ import { GuardGuard } from './guard.guard';
 import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
 import { RecipeEditInstructionComponent } from './recipes/recipes-edit/recipe-edit-instruction/recipe-edit-instruction.component';
 import { RecipesEditIngredientComponent } from './recipes/recipes-edit/recipes-edit-ingredient/recipes-edit-ingredient.component';
+import { IngredientService } from './shared/ingredient.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -49,7 +50,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [RecipeService, ShoppingListService, FormSelectedService, GuardGuard],
+  providers: [RecipeService, ShoppingListService, FormSelectedService, GuardGuard, IngredientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

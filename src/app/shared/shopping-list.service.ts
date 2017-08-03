@@ -1,40 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Ingredient } from "./ingredient.model";
+import { IngredientService } from "./ingredient.service";
 
 @Injectable()
 export class ShoppingListService {
   private ingredients: Ingredient[] = [];
-  private incrementId: number = 29; 
   private selected: Ingredient[] = [];
 
-  constructor() { }
+  constructor(private ingredientService: IngredientService) { }
 
   addNewIngredient(name: string, number: number){
-    if(number <= 0)
-        number = 1;
-    this.ingredients.push(new Ingredient(this.incrementId++, name, number));
+    this.ingredients.push(this.ingredientService.addIngredient(name, number));
     this.sort();
   }
 
   addIngredients(ingredients: Ingredient[]){
-    for(let newIngredient of ingredients){
-      if(this.findIngredient(newIngredient.id)){
-        console.log("Ingredient " + newIngredient.name + " exists");
-        continue;
-      }
+    for(let newIngredient of ingredients)
       this.ingredients.push(newIngredient);
-    }
+    
   }
 
   editIngredient(id: number, name: string, amount: number){
-    let foundIngredient = this.findIngredient(id);
-    if(foundIngredient){
-      foundIngredient.amount = amount;
-      foundIngredient.name = name;
-      if(foundIngredient.amount <= 0)
-        foundIngredient.amount = 1;
-      return;
-    }
+    this.ingredientService.editIngredient(id, name, amount);
   }
 
   removeIngredient(id: number){

@@ -3,6 +3,7 @@ import { Recipe } from "../recipe.model";
 import { ShoppingListService } from "../../shared/shopping-list.service";
 import { ActivatedRoute, Params } from "@angular/router";
 import { RecipeService } from "../../shared/recipe.service";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-recipes-detail',
@@ -16,11 +17,13 @@ export class RecipesDetailComponent implements OnInit {
     this.shoppingService.addIngredients(this.recipe.ingredients);
   }
 
-  constructor(private shoppingService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private shoppingService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-        this.recipe = this.recipeService.findRecipe(params['id']);            
+        this.recipe = this.recipeService.findRecipe(params['id']);   
+        if(!this.recipe)
+          this.location.back();
     });  
   }
 
