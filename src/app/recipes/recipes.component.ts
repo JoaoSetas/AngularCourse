@@ -16,7 +16,7 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit() {    
   }
-
+/*
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     event.key === 'º' ? this.recipeService.addRecipe(
@@ -26,5 +26,5 @@ export class RecipesComponent implements OnInit {
         "http://www.publicdomainpictures.net/pictures/90000/velka/red-scribble-heart.jpg",
         [this.ingredientService.addIngredient("Vela", 69), this.ingredientService.addIngredient("Cama Grade", 1), this.ingredientService.addIngredient("Lubrificante", 1)]) : null;
   }
-
+*/
 }
