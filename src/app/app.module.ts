@@ -19,6 +19,7 @@ import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.compon
 import { RecipeEditInstructionComponent } from './recipes/recipes-edit/recipe-edit-instruction/recipe-edit-instruction.component';
 import { RecipesEditIngredientComponent } from './recipes/recipes-edit/recipes-edit-ingredient/recipes-edit-ingredient.component';
 import { IngredientService } from './shared/ingredient.service';
+import { ReactiveFormsModule } from "@angular/forms";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [RecipeService, ShoppingListService, FormSelectedService, GuardGuard, IngredientService],
   bootstrap: [AppComponent]

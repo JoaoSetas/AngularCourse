@@ -18,6 +18,7 @@ export class ShoppingListService {
     for(let newIngredient of ingredients)
       this.ingredients.push(newIngredient);
     
+    this.sort();
   }
 
   editIngredient(id: number, name: string, amount: number){

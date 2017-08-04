@@ -15,3 +15,9 @@ img{
     max-height: 25rem;
     max-width: 45rem;
 }
+
+@media (max-width: 425px){
+img {
+    max-width: 15rem;
+}
+}

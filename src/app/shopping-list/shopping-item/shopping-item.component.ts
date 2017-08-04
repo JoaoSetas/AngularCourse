@@ -12,8 +12,7 @@ export class ShoppingItemComponent implements OnInit {
   @Input() ingredient: Ingredient;
 
   onSelected(){
-    this.formSelected.onSubmit.next(this.ingredient);
-
+      this.formSelected.onSubmit.next(this.ingredient);
   }
 
   constructor(private formSelected: FormSelectedService, public shoppingService: ShoppingListService) { }

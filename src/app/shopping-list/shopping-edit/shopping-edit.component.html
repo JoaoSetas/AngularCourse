@@ -1,18 +1,25 @@
-<form (keypress)="$event.key == 'Enter' ? onEnter() : null" class="form-inline">
-  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+<form [formGroup]="ingredientForms" (ngSubmit)="onSubmit()" class="form-inline pl-0 col-12">
+  <div class="input-group mb-2 mr-sm-2 mb-md-0" [ngClass]="{'has-danger': !ingredientForms.get('name').valid && (ingredientForms.get('name').touched || ingredientForms.get('name').dirty)}">
     <div class="input-group-addon">Name</div>
-    <input #nameInput [size]="nameInput.value.length ? nameInput.value.length : 20" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Ingredient">
+    <input [formControlName]="'name'" [size]="ingredientForms.get('name').value ? ingredientForms.get('name').value.length : 20" type="text" class="form-control form-control-danger" id="name" placeholder="Ingredient">
   </div>
 
-  <div class="input-group mb-2 mr-sm-2 mb-sm-0 col-2">
+  <div class="input-group mb-2  pl-0 mr-sm-2 mb-md-0 col-md-2" [ngClass]="{'has-danger': !ingredientForms.get('number').valid && (ingredientForms.get('number').touched || ingredientForms.get('number').dirty)}">
     <div class="input-group-addon">#</div>
-    <input #numberInput type="number" class="form-control" id="numberInput" placeholder="Amount">
+    <input [formControlName]="'number'" type="number" class="form-control form-control-danger" id="number" placeholder="Amount">
   </div>
-  <button type="button" (click)="onSubmit()"  class="btn btn-success">Add</button>
-  <button type="button" (click)="onEdit()"  class="btn btn-warning ml-2">Edit</button>
-  <button type="button" (click)="onRemove()"  class="btn btn-danger ml-2">Remove</button>
+  <button class="btn btn-success">Submit</button>
+  <button type="button" (click)="onRemove()" class="btn btn-danger ml-2">Remove</button>
 </form>
 
-<div *ngIf="warning" class="alert alert-warning mt-2" role="alert">
-  <strong>Warning!</strong> {{warning}}
+<div *ngIf="!ingredientForms.get('name').valid && (ingredientForms.get('name').touched || ingredientForms.get('name').dirty)"  class="alert alert-warning mt-2 col-12 col-md-4" role="alert">
+  <strong>Warning!</strong> Enter a name
+</div>
+
+<div *ngIf="!ingredientForms.get('number').valid && (ingredientForms.get('number').touched || ingredientForms.get('number').dirty)" class="alert alert-warning mt-2 col-12 col-md-4" role="alert">
+  <strong>Warning!</strong> Enter a number between 1 - 99999
+</div>
+
+<div class="alert alert-info mt-2 col-12 col-md-4" role="alert">
+  <strong>Heads up!</strong> To Edit, select one and submit {{shoppingService.getSelected().length > 0 ? "(Selected " + shoppingService.getSelected().length + ")" : ""}}
 </div>

@@ -2,7 +2,7 @@
   <div class="col-12">
     <app-shopping-edit></app-shopping-edit>
   </div>
-  <ul class="col-{{size}} mt-3">
+  <ul class="col-{{size}} col-12 col-md-4 mt-3">
       <app-shopping-item *ngFor="let ingredient of shoppingService.getIngredients()" [ingredient]="ingredient"></app-shopping-item>
   </ul>
 </div>
