@@ -1,12 +1,12 @@
 <form [formGroup]="ingredientForms" (ngSubmit)="onSubmit()" class="form-inline pl-0 col-12">
   <div class="input-group mb-2 mr-sm-2 mb-md-0" [ngClass]="{'has-danger': !ingredientForms.get('name').valid && (ingredientForms.get('name').touched || ingredientForms.get('name').dirty)}">
     <div class="input-group-addon">Name</div>
-    <input [formControlName]="'name'" [size]="ingredientForms.get('name').value ? ingredientForms.get('name').value.length : 20" type="text" class="form-control form-control-danger" id="name" placeholder="Ingredient">
-  </div>
+    <input required [formControlName]="'name'" [size]="ingredientForms.get('name').value ? ingredientForms.get('name').value.length : 20" type="text" class="form-control form-control-danger" id="name" placeholder="Ingredient">
+  </div> 
 
   <div class="input-group mb-2  pl-0 mr-sm-2 mb-md-0 col-md-2" [ngClass]="{'has-danger': !ingredientForms.get('number').valid && (ingredientForms.get('number').touched || ingredientForms.get('number').dirty)}">
     <div class="input-group-addon">#</div>
-    <input [formControlName]="'number'" type="number" class="form-control form-control-danger" id="number" placeholder="Amount">
+    <input required [formControlName]="'number'" type="number" class="form-control form-control-danger" id="number" placeholder="Amount">
   </div>
   <button class="btn btn-success">Submit</button>
   <button type="button" (click)="onRemove()" class="btn btn-danger ml-2">Remove</button>
