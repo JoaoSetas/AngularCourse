@@ -1,7 +1,7 @@
 # AngularCourse
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.4.
-This project was built during the completion of this Angular Course https://www.udemy.com/certificate/UC-MR4VIH2Q/
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.4.<br>
+* This project was built during the completion of this Angular Course [Certificate](https://www.udemy.com/certificate/UC-MR4VIH2Q)
 
 ## Development server
 
